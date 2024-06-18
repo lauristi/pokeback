@@ -25,7 +25,11 @@ ____
 #### Tecnologias utilizadas
 ____
 
-.Net Core 8.0
+-  Visual Studio 2002
+-  VsCode
+-  Beaver
+
+-  .Net Core 8.0
 -  AutoMapper 13.0.1
 -  Microsoft.Data.Sqllite 8.0.6
 -  Newtonsoft.Json 13.0.3
@@ -83,8 +87,9 @@ E a lista segue...
 
 ### Considerações finais
 
-Agradeço a oportunidade do teste, foi divertido. 
-Me permitiu trabalhar com SqLite. Coisa que eu não tinha feito antes, além de revisitar alguns conceitos.
+Agradeço a oportunidade do teste. Foi divertido. 
+Pude revisitar alguns conceitos e trabalhar com SqLite, coisa que não tinha feito antes.
+
 
 
 
