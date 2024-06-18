@@ -1,49 +1,97 @@
-# Backend Challenge - Pokémons
+## Pokedex
+##### Backend Challenge - Pokémons
 
-## Introdução
+> This is a challenge by [Coodesh](https://coodesh.com/)
 
-Este é um teste para que possamos ver as suas habilidades como Front Developer.
+Projeto desafio doa coodesh/kotas que interage com a API https://pokeapi.co/. e um banco de dados SQLite.
 
-Nesse teste você deverá desenvolver um projeto para listar pokémons, utilizando como base a API [https://pokeapi.co/](https://pokeapi.co/ "https://pokeapi.co/").
+#### EndPoints da API
+____
+[Post]/api/masters
+- Salva dados do mestre pokémon
 
-[SPOILER] As instruções de entrega e apresentação do teste estão no final deste Readme (=
+[Post]/api/captures
+- Salva as capturas feitas pelos mestres pokémon
 
-### Antes de começar
- 
-- O projeto deve utilizar a Linguagem específica na avaliação. Por exempo: C#
-- Considere como deadline da avaliação a partir do início do teste. Caso tenha sido convidado a realizar o teste e não seja possível concluir dentro deste período, avise a pessoa que o convidou para receber instruções sobre o que fazer.
-- Documentar todo o processo de investigação para o desenvolvimento da atividade (README.md no seu repositório); os resultados destas tarefas são tão importantes do que o seu processo de pensamento e decisões à medida que as completa, por isso tente documentar e apresentar os seus hipóteses e decisões na medida do possível.
+[Get]/api/captures
+- Lista as capturas feitas pelos mestres pokémon
 
-## Backend-end
+[Get]/api/pokemons/{id}
+- Recupera os dados de um pokémon através de seu ID.
 
-- Get para 10 Pokémon aleatórios
-- GetByID para 1 Pokémon específico
-- Cadastro do mestre pokemon (dados básicos como nome, idade e cpf) em SQLite4 - Post para informar que um Pokémon foi capturado.5 - Listagem dos Pokémon já capturados.
-  
+[Get]/api/pokemons/random
+-  Recupera os dados de dez pokémons alectórios. 
 
-### Requisitos
+#### Tecnologias utilizadas
+____
 
-1 - Todas elas devem retornar os dados básicos do Pokémon, suas evoluções e o base64 de sprite default de cada Pokémon.
+.Net Core 8.0
+-  AutoMapper 13.0.1
+-  Microsoft.Data.Sqllite 8.0.6
+-  Newtonsoft.Json 13.0.3
+-  Swashbuckle.AspNetCore
+
+#### Instalação & Utilização
+
+É um back-end, então configure um servidor Windows com IIS ou Kestrel
+ou um servidor Linux com Kestrel, para torna-lo acessível.
+Aconselho o uso do Ngnix para facilitar a implantação. 
+E construção de um front-end para consumi-lo
+depois.
+;-)
+
+### Decisões sobre o projeto
+
+**O endpoint Da recuperação de dez pokémons randomicamente. **
+
+Inicialmente gostaria de fazer somente uma chamada e trabalhar os dados
+no servidor, mas o endpoint limita a quantidade de itens que podem ser retornados a vinte. o que é compreensível devido ao tamanho da massa de dados
+
+Optei por fazer uma busca inicial somente para trazer a quantidade máxima de
+pokémons disponíveis e assim fazer um Random numa amostra fechada
+Uma busca em informar o ID do pokémon me dava essa informação
+
+Depois de extrair o JSON de retorno, transformando-o numa classe, percebi
+o tamanho da encrenca. (Very well played, examiner), eu podia recuperar 10 pokémons aleatórios e traze-los no arranjo JSON original o que estava dando quase 3mb e consumindo um tempo absurdo no Swagger, o que é interessante, se o gargalo é o Swagger talvez o consumo pelo front não fosse tão afetado. De qualquer forma, optei por criar uma classe menos, e fazer a transição entre elas usado mapper, já que usar a classe original não foi um requisito implícito do desafio. Mas claro. Pode ser feito com um custo de processamento.
+
+**A interação com o banco de dados**
+
+Construí as tabelas com id autoincrementada e com dados bem básicos, ainda
+assim percebi que algumas informações das tabelas, como id e data não precisavam ser informadas, mas poderiam ser retornadas, por isso optei por usar
+classes DTO.
+
+**Geral**
+
+Optei por usar uma estrutura com serviços e injeção de dependência, e uma estrutura de pasta que me é mais familiar. 
+
+### O que poderia ter sido feito, mas não foi
+
+Poderia ter usado uma estrutura com repository, separando mais ainda as responsabilidades
+
+Poderia ter feito testes unitários
+
+Poderia ter implementado uma interação mais complexa com a API de pokémons
+para, por exemplo, trazer o nome do pokémon na lista de capturas
+
+Poderia ter implementado um Middleware de tratamento de erro, para tratar
+de forma padronizada todos os erros, retornando, por exemplo, um JSON com 
+dados para ajudar na correção de erros
+
+Poderia ter usado Dapper ao invés do SqLite Nativo (provavelmente)
+
+E a lista segue...
+
+### Considerações finais
+
+Agradeço a oportunidade do teste, foi divertido. 
+Me permitiu trabalhar com SqLite. Coisa que eu não tinha feito antes, além de revisitar alguns conceitos.
 
 
-## Readme do Repositório
 
-- Deve conter o título do projeto
-- Uma descrição sobre o projeto em frase
-- Deve conter uma lista com linguagem, framework e/ou tecnologias usadas
-- Como instalar e usar o projeto (instruções)
-- Não esqueça o [.gitignore](https://www.toptal.com/developers/gitignore)
-- Se está usando github pessoal, referencie que é um challenge by coodesh:  
 
->  This is a challenge by [Coodesh](https://coodesh.com/)
 
-## Finalização e Instruções para a Apresentação
 
-1. Adicione o link do repositório com a sua solução no teste
-2. Adicione o link da apresentação do seu projeto no README.md.
-3. Verifique se o Readme está bom e faça o commit final em seu repositório;
-4. Envie e aguarde as instruções para seguir. Sucesso e boa sorte. =)
 
-## Suporte
 
-Use a [nossa comunidade](https://discord.gg/rdXbEvjsWu) para tirar dúvidas sobre o processo ou envie uma mensagem diretamente a um especialista no chat da plataforma. 
+
+
