@@ -46,7 +46,7 @@ depois.
 
 ### Decisões sobre o projeto
 
-**O endpoint Da recuperação de dez pokémons randomicamente. **
+**O endpoint Da recuperação de dez pokémons randomicamente.**
 
 Inicialmente gostaria de fazer somente uma chamada e trabalhar os dados
 no servidor, mas o endpoint limita a quantidade de itens que podem ser retornados a vinte. o que é compreensível devido ao tamanho da massa de dados
@@ -70,18 +70,18 @@ Optei por usar uma estrutura com serviços e injeção de dependência, e uma es
 
 ### O que poderia ter sido feito, mas não foi
 
-Poderia ter usado uma estrutura com repository, separando mais ainda as responsabilidades
+- Poderia ter usado uma estrutura com repository, separando mais ainda as responsabilidades
 
-Poderia ter feito testes unitários
+- Poderia ter feito testes unitários
 
-Poderia ter implementado uma interação mais complexa com a API de pokémons
+- Poderia ter implementado uma interação mais complexa com a API de pokémons
 para, por exemplo, trazer o nome do pokémon na lista de capturas
 
-Poderia ter implementado um Middleware de tratamento de erro, para tratar
+- Poderia ter implementado um Middleware de tratamento de erro, para tratar
 de forma padronizada todos os erros, retornando, por exemplo, um JSON com 
 dados para ajudar na correção de erros
 
-Poderia ter usado Dapper ao invés do SqLite Nativo (provavelmente)
+- Poderia ter usado Dapper ao invés do SqLite Nativo (provavelmente)
 
 E a lista segue...
 
